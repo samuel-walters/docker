@@ -53,28 +53,30 @@ Think about a school. Originally, the number of students won't change and there 
 
 Virtualization and containerization are the two most frequently used mechanisms to host applications in a computer system. Virtualization uses the notion of a virtual machine as the fundamental unit. Containerization, on the other hand, uses the concept of a container.
 
-### commands
+### Docker commands
 
-docker run hello-world
+* Windows users should use `alias docker="winpty docker"` for the below commands to work.
 
-first looks locally. Then look to registry (docker hub). Then display the message. It is case sensitive
+* `docker run hello-world`: This first looks locally. Then it looks on the registry (on docker hub). It then displays the message if it finds it. The command is case sensitive.
 
-docker images
+* `docker images`: lists all the local images
 
-lists all the local images
+* `docker run -d -p 80:80 nginx`: this will run the image, and the 80:80 is an example of port mapping.
 
-docker run -d -p 80:80 nginx --> This is port mapping. 
+* `docker ps -a`: Lists all the running containers.
 
-docker ps -a
+* `docker exec -it idhereok bash`: The exec command is used to interact with already running containers on the Docker host. It allows you to start a session within the default directory of the container.
 
-docker images
+* `docker stop containeridhere`: Stops a running container(it does save changes).
 
-alias docker="winpty docker"
+* `docker rm containeridhere -f`: Completely removes a container.
 
-docker exec -it idhereok bash
+* `docker image rm`: Removes an image.
 
-docker stop containeridhere (saves changes)
+* `docker cp ./index.html 8c913389dc59:/usr/share/nginx/html/`: Example of copying a file from the localhost to the container.
 
-docker rm containeridhere -f (removes it completely)
+* `docker commit 8c913389dc59 samuelwalters/test:version2`: Making a commit with docker.
 
-docker cp ./index.html 8c913389dc59:/usr/share/nginx/html/
+* `docker push samuelwalters/test:version2`: Making a push with docker.
+
+* `docker run -d -p 80:80 samuelwalters/test:version2`: Running a container. If it does not exist locally, this will pull the container from the registry on docker hub (where my repository is).
