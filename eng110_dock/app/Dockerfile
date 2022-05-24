@@ -1,21 +1,17 @@
-# select base image to build our own customised node app microservice
-
 FROM node
-
-# set working directory 
+#Set working directory
 WORKDIR /usr/src/app
-
-# install node_modules
+# Add packages
 ADD package.json /usr/src/app/package.json
-
+# Copy packages
 COPY package*.json ./
-
+# Install npm
 RUN npm install -g npm@latest
-
+# Run npm
 RUN npm install express
-
-# define the port
+# Copy everything from current working directory over to container's current working directory
 COPY . . 
-# start the app with CMD
-
+# Allow port 300
+EXPOSE 3000
+# Start the app
 CMD ["node", "app.js"]
