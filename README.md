@@ -206,7 +206,7 @@ CMD ["node", "app.js"]
 
 * Even try building from the below docker as well which is compressed (because it uses node:alpine)!
 
-'''docker
+```docker
 FROM node:alpine
 WORKDIR /usr/src/app
 
@@ -226,7 +226,7 @@ COPY . .
 EXPOSE 3000
 # Start the app
 CMD ["node", "app.js"]
-'''
+```
 
 ### Setting app up with mongodb
 
