@@ -1,0 +1,25 @@
+version: '5'
+
+services:
+
+  db:
+    image: mongo
+    restart: always
+    build: .
+    ports:
+      - "27017:27017"
+    volumes:
+      - 'db:/data/db'
+    command: mongod --bind_ip 0.0.0.0
+
+  app:
+    build: ./eng110_dock/app
+    restart: always
+    ports: 
+      - "3000:3000"
+    environment:
+      - DB_HOST=mongodb://db:27017/posts
+    depends_on:
+      - db
+volumes:
+  db: 

@@ -227,3 +227,39 @@ EXPOSE 3000
 # Start the app
 CMD ["node", "app.js"]
 '''
+
+### Setting app up with mongodb
+
+> 1. `docker run --name db -d mongo:latest`.
+
+> 2. Add this to `set_up.yml`:
+
+```yaml
+version: '5'
+
+services:
+
+  db:
+    image: mongo
+    restart: always
+    build: .
+    ports:
+      - "27017:27017"
+    volumes:
+      - 'db:/data/db'
+    command: mongod --bind_ip 0.0.0.0
+
+  app:
+    build: ./eng110_dock/app
+    restart: always
+    ports: 
+      - "3000:3000"
+    environment:
+      - DB_HOST=mongodb://db:27017/posts
+    depends_on:
+      - db
+volumes:
+  db: 
+```
+
+> 3. Run the command `docker-compose -f set_up.yml up`
