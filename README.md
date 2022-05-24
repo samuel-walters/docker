@@ -140,7 +140,7 @@ Images are immutable. When we want to use images, we use the docker run command 
 
 * `docker cp ./index.html 8c913389dc59:/usr/share/nginx/html/`: Example of copying a file from the localhost to the container.
 
-* `docker commit 8c913389dc59 samuelwalters/test:version2`: Making a commit with docker.
+* `docker commit containerid samuelwalters/test:version2`: Making a commit with docker.
 
 * `docker push samuelwalters/test:version2`: Making a push with docker.
 
@@ -171,3 +171,31 @@ EXPOSE 80
 # Launch the app - run this command at the end
 CMD ["nginx", "-g", "daemon off;"]
 ```
+
+* Or run the app with these lines (place Dockerfile inside the app folder):
+
+```docker
+# select base image to build our own customised node app microservice
+
+FROM node
+
+# set working directory 
+WORKDIR /usr/src/app
+
+# install node_modules
+ADD package.json /usr/src/app/package.json
+
+COPY package*.json ./
+
+RUN npm install -g npm@latest
+
+RUN npm install express
+
+# define the port
+COPY . . 
+# start the app with CMD
+
+CMD ["node", "app.js"]
+```
+
+* Because the above image uses port 3000, use the command `docker run -d -p 80:3000 samuelwalters/app:v5` to run it. 
