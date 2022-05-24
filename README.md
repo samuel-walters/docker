@@ -27,11 +27,17 @@ Each service is designed for a set of capabilities and focuses on solving a spec
 
 ## Flexible Scaling
 
-Microservices allow each service to be independently scaled to meet demand for the application feature it supports. This enables teams to right-size infrastructure needs, accurately measure the cost of a feature, and maintain availability if a service experiences a spike in demand.
+Microservices allow each service to be independently scaled to meet demand for the application feature it supports (instead of scaling up the application as a whole - as with monolithic architectures). This enables teams to right-size infrastructure needs, accurately measure the cost of a feature, and maintain availability if a service experiences a spike in demand.
+
+## Easier Testing (via Fault Isolation)
+
+You can test the various components and isolate any problems quickly which allows you to give a more prompt solution.
 
 ## Agility 
 
 Microservices foster an organization of small, independent teams that take ownership of their services. Teams act within a small and well understood context, and are empowered to work more independently and more quickly. This shortens development cycle times. You benefit significantly from the aggregate throughput of the organization.
+
+(Easy to divide the workload as different groups of people can work on different services - more ends up getting done which shortens the product development lifecycle.)
 
 ## Easy Deployment
 
@@ -45,6 +51,8 @@ Dividing software into small, well-defined modules enables teams to use function
 
 Service independence increases an application’s resistance to failure. In a monolithic architecture, if a single component fails, it can cause the entire application to fail. With microservices, applications handle total service failure by degrading functionality and not crashing the entire application.
 
+(The system won't crash just because one component stops working - for example, if there were a bug in the database, there would just be an error message when another service sends a request to it.)
+
 # Disadvantages of Microservices
 
 ## Communication Issues
@@ -53,7 +61,9 @@ There is a high chance of failure during communication between different service
 
 ## Complex
 
-Microservices has all the associated complexities of the distributed system. It will be difficult to manage a large number of services. It may also be difficult to carry out testing over such a distributed system.
+Microservices has all the associated complexities of the distributed system. It will be difficult to manage a large number of services. 
+
+(Need to know how APIs work - need lots of experience under your belt about how different services can interact with one another.)
 
 # Use Case
 
@@ -69,8 +79,9 @@ Think about a school. Originally, the number of students won't change and there 
 
 # Containerisation vs Virtualisation 
 
-### Overview
-Virtualization and containerization are the two most frequently used mechanisms to host applications in a computer system. Virtualization uses the notion of a virtual machine as the fundamental unit. Containerization, on the other hand, uses the concept of a container.
+* Containerisation - resources shared directly with the host which allows you to run a lot of docker containers, whereas you would only be able to run a few VMs. VMs has to quarantine off a set amount of resources: harddrive space, memory, and processing power, emulate hardware, and boot an entire OS. Then the VM communicates with the host computer through a translator application on the host's OS called a hypervisor. But docker communicates natively with the system kernel, bypassing the middleman on linux machines (and on windows).
+
+Docker also uses less disk space as it uses a layered file system. If you have multiple docker images using the same base image, docker will only keep a single copy of the files needed and share it with each container. 
 
 ### Containerisation
 For example, a Docker container is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
