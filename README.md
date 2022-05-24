@@ -118,6 +118,14 @@ Images are immutable. When we want to use images, we use the docker run command 
 
 * Deleted: A container in a dead state
 
+## Why Docker?
+
+After more than a decade in use, Docker remains the de facto container standard because of its ability to integrate with a broad array of tools and platforms, such as Kubernetes. 
+
+Docker features a virtual production environment known as a container that can be easily shared with others.
+
+Compresses images easier, reducing their storage capacity by up to 4 times. (1GB to 250MB).
+
 ### Docker commands
 
 * Windows users should use `alias docker="winpty docker"` for the below commands to work.
@@ -195,3 +203,27 @@ CMD ["node", "app.js"]
 ```
 
 * Because the above image uses port 3000, use the command `docker run -d -p 80:3000 samuelwalters/app:v5` to run it. 
+
+* Even try building from the below docker as well which is compressed (because it uses node:alpine)!
+
+'''docker
+FROM node:alpine
+WORKDIR /usr/src/app
+
+#Set working directory
+WORKDIR /usr/src/app
+# Add packages
+ADD package.json /usr/src/app/package.json
+# Copy packages
+COPY package*.json ./
+# Install npm
+RUN npm install -g npm@latest
+# Run npm
+RUN npm install express
+# Copy everything from current working directory over to container's current working directory
+COPY . . 
+# Allow port 300
+EXPOSE 3000
+# Start the app
+CMD ["node", "app.js"]
+'''

@@ -1,4 +1,6 @@
-FROM node
+FROM node:alpine
+WORKDIR /usr/src/app
+
 #Set working directory
 WORKDIR /usr/src/app
 # Add packages
