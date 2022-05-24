@@ -53,6 +53,34 @@ Think about a school. Originally, the number of students won't change and there 
 
 Virtualization and containerization are the two most frequently used mechanisms to host applications in a computer system. Virtualization uses the notion of a virtual machine as the fundamental unit. Containerization, on the other hand, uses the concept of a container.
 
+A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
+
+The key differentiator between containers and virtual machines is that virtual machines virtualize an entire machine down to the hardware layers and containers only virtualize software layers above the operating system level.
+
+### Why use docker over vagrant?
+
+- Integration is easier (it does not care about the OS), faster set up, takes up less storage.
+
+- Docker shares the resources from the OS, and vagrant takes the resources.
+
+- Docker containers are very easy to deploy in any cloud platform. It can get more applications running on the same hardware when compared to other technologies, it makes it easy for developers to quickly create, ready-to-run containerized applications and it makes managing and deploying applications much easier.
+
+# What is Docker
+
+Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.
+
+## How does it work?
+
+Docker provides an API for interacting with the Docker daemon (a daemon is a computer program that runs as a background process, rather than being under the direct control of an interactive user). 
+
+When you try to run a container, Docker will first try to check your local machine for the image. If it is not there, it will fetch the appropriate image from the registry (docker hub) using an API.
+
+![](https://i.imgur.com/Li9yyDS.png)
+
+## Difference between image and container?
+
+Images are immutable. When we want to use images, we run docker run (etc.) and that creates a container for us to start using it.
+
 ### Docker commands
 
 * Windows users should use `alias docker="winpty docker"` for the below commands to work.
@@ -61,7 +89,7 @@ Virtualization and containerization are the two most frequently used mechanisms 
 
 * `docker images`: lists all the local images
 
-* `docker run -d -p 80:80 nginx`: this will run the image, and the 80:80 is an example of port mapping.
+* `docker run -d -p 80:80 nginx`: this will run the image, and the 80:80 is an example of port mapping. -d stands for detached - if there is an error, kill the container and run this command without -d to see the logs.
 
 * `docker ps -a`: Lists all the running containers.
 
@@ -79,4 +107,6 @@ Virtualization and containerization are the two most frequently used mechanisms 
 
 * `docker push samuelwalters/test:version2`: Making a push with docker.
 
-* `docker run -d -p 80:80 samuelwalters/test:version2`: Running a container. If it does not exist locally, this will pull the container from the registry on docker hub (where my repository is).
+* `docker run -d -p 80:80 samuelwalters/test:version2`: Running a container. If it does not exist locally, this will pull the image from the registry on docker hub (where my repository is).
+
+* `docker logs containerid`: useful for debugging.
