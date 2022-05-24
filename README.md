@@ -108,7 +108,7 @@ Images are immutable. When we want to use images, we use the docker run command 
 
 ![](https://i.imgur.com/Q1wBPp4.png)
 
-* Created: A container that has been created but not started
+* Created: A container that has been created but not started. The container gets created from an image.
 
 * Running: A container running with all its processes
 
@@ -117,7 +117,6 @@ Images are immutable. When we want to use images, we use the docker run command 
 * Stopped: A container whose processes have been stopped
 
 * Deleted: A container in a dead state
-
 
 ### Docker commands
 
@@ -148,3 +147,27 @@ Images are immutable. When we want to use images, we use the docker run command 
 * `docker run -d -p 80:80 samuelwalters/test:version2`: Running a container. If it does not exist locally, this will pull the image from the registry on docker hub (where my repository is).
 
 * `docker logs containerid`: useful for debugging.
+
+* `nano Dockerfile`. 
+
+* `docker build -t samuelwalters/eng110_sam_nginx:v2 .`.
+
+* Create a file called `Dockerfile` (it is case sensitive). Look at the following lines of code that can be placed inside this:
+
+```docker
+# Create a docker file to build a customised docker image
+# Choose a base image
+FROM nginx
+
+# Label the image
+LABEL MAINTAINER=SWALTERS@SPARTAGLOBAL.COM
+
+# Migrate/transfer/copy/move data from localhost to our image/container. 
+COPY index.html /usr/share/nginx/html/
+
+# Expose 80
+EXPOSE 80
+
+# Launch the app - run this command at the end
+CMD ["nginx", "-g", "daemon off;"]
+```
