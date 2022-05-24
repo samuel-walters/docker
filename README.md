@@ -45,25 +45,48 @@ Dividing software into small, well-defined modules enables teams to use function
 
 Service independence increases an application’s resistance to failure. In a monolithic architecture, if a single component fails, it can cause the entire application to fail. With microservices, applications handle total service failure by degrading functionality and not crashing the entire application.
 
+# Disadvantages of Microservices
+
+## Communication Issues
+
+There is a high chance of failure during communication between different services - especially if there are a lot of existing services all communicating with one another.
+
+## Complex
+
+Microservices has all the associated complexities of the distributed system. It will be difficult to manage a large number of services. It may also be difficult to carry out testing over such a distributed system.
+
 # Use Case
 
-Think about a school. Originally, the number of students won't change and there is no need to scale. In this case, a monolith architecture can be used. But if the school expands, buying new campuses and increasing its number of students, then microservices can be used as a way to help scale up and match the new demands.
+Think about a school. Originally, the number of students won't change and there is no need to scale. In this case, a monolith architecture can be used. But if the school expands, buying new campuses and increasing its number of students, then microservices can be used as a way the business scale up (and/or scale out) to meet the new demands.
+
+# What is Containerisation 
+
+* Containerization is a form of virtualization where applications run in isolated user spaces, called containers, while using the same shared operating system (OS). A container is essentially a fully packaged and portable computing environment.
+
+* Everything an application needs to run (its libraries, configuration files, and dependencies) is encapsulated and isolated in its container. The container itself is abstracted away from the host OS, with only limited access to underlying resources—much like a lightweight virtual machine (VM). 
+
+* With containerization, there’s less overhead during startup and no need to set up a separate guest OS for each application since they all share the same OS kernel. Because of this high efficiency, containerization is commonly used for packaging up the many individual microservices that make up modern apps.
 
 # Containerisation vs Virtualisation 
 
+### Overview
 Virtualization and containerization are the two most frequently used mechanisms to host applications in a computer system. Virtualization uses the notion of a virtual machine as the fundamental unit. Containerization, on the other hand, uses the concept of a container.
 
-A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
+### Containerisation
+For example, a Docker container is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
 
+### Differences
 The key differentiator between containers and virtual machines is that virtual machines virtualize an entire machine down to the hardware layers and containers only virtualize software layers above the operating system level.
 
-### Why use docker over vagrant?
+![](https://i.imgur.com/a6LUSnm.png)
 
-- Integration is easier (it does not care about the OS), faster set up, takes up less storage.
+- With docker, integration is easier (it does not care about the OS).
+
+- Faster set up with containerisation.
+
+- Containerisation takes up less storage.
 
 - Docker shares the resources from the OS, and vagrant takes the resources.
-
-- Docker containers are very easy to deploy in any cloud platform. It can get more applications running on the same hardware when compared to other technologies, it makes it easy for developers to quickly create, ready-to-run containerized applications and it makes managing and deploying applications much easier.
 
 # What is Docker
 
@@ -79,7 +102,22 @@ When you try to run a container, Docker will first try to check your local machi
 
 ## Difference between image and container?
 
-Images are immutable. When we want to use images, we run docker run (etc.) and that creates a container for us to start using it.
+Images are immutable. When we want to use images, we use the docker run command and this will create a container from the image.
+
+## Docker Container Lifecycle
+
+![](https://i.imgur.com/Q1wBPp4.png)
+
+* Created: A container that has been created but not started
+
+* Running: A container running with all its processes
+
+* Paused: A container whose processes have been paused
+
+* Stopped: A container whose processes have been stopped
+
+* Deleted: A container in a dead state
+
 
 ### Docker commands
 
