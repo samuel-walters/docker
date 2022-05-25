@@ -373,6 +373,14 @@ What's great about ReplicaSets is you can make live changes to the .yml file, an
 
 ![](https://i.imgur.com/zaxjKzi.png)
 
+#### Set up
+
+> 1. Go to the `k8` folder.
+
+> 2. Run the commands `kubectl create -f mongo.yml` and `kubectl create -f app-deploy.yml`. 
+
+> 3. Go to localhost (port 80) and also check the /posts page.
+
 ## Kubernetes Commands
 
 * `kubectl cluster-info`: A useful way to tell if K8 is running properly.
@@ -401,6 +409,5 @@ What's great about ReplicaSets is you can make live changes to the .yml file, an
   ```
 
 * `kubectl exec`: Execute a command against a container in a pod.
-
 
 * `kubectl create -f app-deploy.yml`: Create one or more resources from a file.
