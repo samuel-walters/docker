@@ -1,0 +1,39 @@
+---
+# APP DEPLOYMENT
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sam-node-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+        - name: node
+          image: samuelwalters/app:v9
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DB_HOST
+              value: mongodb://mongo:27017/posts
+          imagePullPolicy: Always
+---
+#SERVICE APP
+apiVersion: v1
+kind: Service
+metadata:
+  name: sam-service-app
+spec:
+  selector:
+    app: node
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: LoadBalancer

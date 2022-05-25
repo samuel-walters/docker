@@ -1,3 +1,9 @@
+### Links
+
+* [Microservices](#What-are-microservices?)
+
+* [Kubernetes](#Kubernetes)
+
 # What are microservices?
 
 Microservices are an architectural and organizational approach to software development where software is composed of small independent services that communicate over well-defined APIs. These services are owned by small, self-contained teams.
@@ -291,7 +297,7 @@ volumes:
 
 * `docker inspect samuelwalters/app:v9`. 
 
-# What is k8?
+# Kubernetes
 
 Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
 
@@ -356,7 +362,7 @@ But if this was to scale to a million users, then k8 would need to be used. And 
 
 A ReplicaSet is a process that runs multiple instances of a Pod and keeps the specified number of Pods constant. Its purpose is to maintain the specified number of Pod instances running in a cluster at any given time to prevent users from losing access to their application when a Pod fails or is inaccessible.
 
-(make live changes - for example, edit the number of replicas from 3 to 5 and the app will still be running)
+What's great about ReplicaSets is you can make live changes to the .yml file, and the user won't notice anything as the application will still be running. For example, you can edit the number of replicas from 3 to 5 and the app will not go down. 
 ![](https://i.imgur.com/H57GFjz.png)
 
 ## Kubernetes Architecture
@@ -379,6 +385,10 @@ A ReplicaSet is a process that runs multiple instances of a Pod and keeps the sp
 
 * kubectl get service
 
+* kubectl get pvc
+
+* kubectl create -f app-deploy.yml
+
 - deploy our nginx-customised image in k8 cluster
 
 - deploy with 3 replica sets (rs)
@@ -392,14 +402,7 @@ A ReplicaSet is a process that runs multiple instances of a Pod and keeps the sp
 - if too many things are running, try kubectl get all
 
 
-### task
-
-K8 deployment with 3 pods (work with containers) - each pod will have its own ip. In k8 language, k8 ReplicaSet/replicas (rs).
-
-- Start with nginx customied image - connect using the port provided - 80.
-- check with kubectl get deploy - should see three pods running.
-- nginx-deploy.yml
-- k8 APIs to create a deployment - 
+### Diagram for Class Task
 
 ![](https://i.imgur.com/zaxjKzi.png)
 
