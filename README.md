@@ -356,6 +356,7 @@ But if this was to scale to a million users, then k8 would need to be used. And 
 
 A ReplicaSet is a process that runs multiple instances of a Pod and keeps the specified number of Pods constant. Its purpose is to maintain the specified number of Pod instances running in a cluster at any given time to prevent users from losing access to their application when a Pod fails or is inaccessible.
 
+(make live changes - for example, edit the number of replicas from 3 to 5 and the app will still be running)
 ![](https://i.imgur.com/H57GFjz.png)
 
 ## Kubernetes Architecture
@@ -371,6 +372,10 @@ A ReplicaSet is a process that runs multiple instances of a Pod and keeps the sp
 * kubectl cluster-info
 
 * kubectl get namespace
+
+* kubectl get rs
+
+* kubectl describe deploy node
 
 * kubectl get service
 
