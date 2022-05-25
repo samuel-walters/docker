@@ -280,3 +280,107 @@ volumes:
 * To get the seeds to work, use the command `docker exec -it containerid node seeds/seed.js`. 
 
 * Run this command to bring down the containers (and networks): `docker-compose -f set_up.yml down`.
+
+### Miscellaneous commands
+
+* `docker volume create eng110`.
+
+* `docker volumne ls`.
+
+* `docker history samuelwalters/app:v9`.
+
+* `docker inspect samuelwalters/app:v9`. 
+
+# What is k8?
+
+Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
+
+## Kubernetes Benefits
+
+### Self-healing
+Kubernetes restarts containers that fail, replaces containers, kills containers that don't respond to your user-defined health check, and doesn't advertise them to clients until they are ready to serve.
+
+### Load balancing and Service Discovery
+Kubernetes can expose a container using the DNS name or using their own IP address. If traffic to a container is high, Kubernetes is able to load balance and distribute the network traffic so that the deployment is stable.
+
+### Automated rollouts and rollbacks.
+You can describe the desired state for your deployed containers using Kubernetes, and it can change the actual state to the desired state at a controlled rate. For example, you can automate Kubernetes to create new containers for your deployment, remove existing containers and adopt all their resources to the new container.
+
+### Automatic bin packing
+
+You provide Kubernetes with a cluster of nodes that it can use to run containerized tasks. You tell Kubernetes how much CPU and memory (RAM) each container needs. Kubernetes can fit containers onto your nodes to make the best use of your resources.
+
+### Secret and Configuration Management
+Kubernetes lets you store and manage sensitive information, such as passwords, OAuth tokens, and SSH keys. You can deploy and update secrets and application configuration without rebuilding your container images, and without exposing secrets in your stack configuration.
+
+### Storage orchestration
+Kubernetes allows you to automatically mount a storage system of your choice, such as local storages, public cloud providers, and more.
+
+# Why Kubernetes?
+
+Cloud is expensive, and businesses might need services running all the time.
+
+## Use case
+
+If there were three courses running, with 12-13 people each, then k8 won't have to be used as docker compose will be able to do the job. 
+
+But if this was to scale to a million users, then k8 would need to be used. And yet docker compose isn't useless: it depends upon what the client's requirements are.
+
+# Kubernetes Services
+
+![](https://i.imgur.com/smnqTWu.png)
+
+* Container: A container image is a ready-to-run software package, containing everything needed to run an application: the code and any runtime it requires, application and system libraries, and default values for any essential settings.
+
+* Pod: Pods contain one or more containers, such as Docker containers. When a Pod runs multiple containers, the containers are managed as a single entity and share the Pod's resources. Generally, running multiple containers in a single Pod is an advanced use case. Pods also contain shared networking and storage resources for their containers:
+
+
+    1. Network: Pods are automatically assigned unique IP addresses. Pod containers share the same network namespace, including IP address and network ports. Containers in a Pod communicate with each other inside the Pod on localhost.
+    2. Storage: Pods can specify a set of shared storage volumes that can be shared among the containers.
+
+* Service: A Service in Kubernetes is a REST object, similar to a Pod. Like all of the REST objects, you can POST a Service definition to the API server to create a new instance. 
+
+* Service Accounts: Kubernetes service accounts are Kubernetes resources, created and managed using the Kubernetes API, meant to be used by in-cluster Kubernetes-created entities, such as Pods, to authenticate to the Kubernetes API server or external services.
+
+* Volume: A Kubernetes volume is a directory that contains data accessible to containers in a given Pod in the orchestration and scheduling platform.
+
+* Persistent volume: A persistent volume is a piece of storage in a cluster that an administrator has provisioned. It is a resource in the cluster, just as a node is a cluster resource. A persistent volume is a volume plug-in that has a lifecycle independent of any individual pod that uses the persistent volume.
+
+* ContainerPort: The ContainerPort defines the port on which the app can be reached.
+
+* Namespace: Namespaces are essential objects for dividing and managing Kubernetes clusters. Kubernetes namespaces allow us to logically segregate and assign resources to individual users, teams or applications. Kubernetes Namespaces provide the basic building blocks for resource usage allowance, access control and isolation for applications, users or groups of users. By using Kubernetes Namespaces, you can increase resource efficiencies, as a single Kubernetes cluster can now be used for a diverse set of workloads.
+
+* ConfigMaps: A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume. This allows you to decouple environment-specific configurations from your container images so that your applications become easily portable.
+
+## Kubernetes ReplicaSet
+
+A ReplicaSet is a process that runs multiple instances of a Pod and keeps the specified number of Pods constant. Its purpose is to maintain the specified number of Pod instances running in a cluster at any given time to prevent users from losing access to their application when a Pod fails or is inaccessible.
+
+![](https://i.imgur.com/H57GFjz.png)
+
+## Kubernetes Architecture
+
+![](https://i.imgur.com/XjYxJvj.png)
+
+## Kubernetes Commands
+
+* kubectl
+
+* kubectl cluster-info
+
+* kubectl get namespace
+
+* kubectl get service
+
+- deploy our nginx-customised image in k8 cluster
+
+- deploy with 3 replica sets (rs)
+
+- kubectl get svc - get pods - get rs - get deploy
+
+- kubectl describe svc 
+
+- kubectl exec
+
+- if too many things are running, try kubectl get all
+
