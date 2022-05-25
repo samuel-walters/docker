@@ -20,7 +20,7 @@ spec:
     spec:
       containers: 
         - name: nginx
-          image: samuelwalters/eng110_sam_nginx
+          image: samuelwalters/test
           ports:
             - containerPort: 80
           # if it does not exist locally, then pull it
