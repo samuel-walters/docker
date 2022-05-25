@@ -380,7 +380,9 @@ What's great about ReplicaSets is you can make live changes to the .yml file, an
 
 > 2. Run the commands `kubectl create -f mongo.yml` and `kubectl create -f app-deploy.yml`. 
 
-> 3. Go to localhost (port 80) and also check the /posts page.
+> 3. Run this command `kubectl exec podname node seeds/seed.js` to display posts on the /posts page.
+
+> 4. Go to localhost (port 80) and check the /posts page.
 
 ## Kubernetes Commands
 
