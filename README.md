@@ -326,7 +326,7 @@ If there were three courses running, with 12-13 people each, then k8 won't have 
 
 But if this was to scale to a million users, then k8 would need to be used. And yet docker compose isn't useless: it depends upon what the client's requirements are.
 
-# Kubernetes Services
+# Kubernetes Micro-Services
 
 ![](https://i.imgur.com/smnqTWu.png)
 
@@ -401,4 +401,5 @@ K8 deployment with 3 pods (work with containers) - each pod will have its own ip
 - nginx-deploy.yml
 - k8 APIs to create a deployment - 
 
+![](https://i.imgur.com/zaxjKzi.png)
 
