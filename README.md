@@ -365,44 +365,42 @@ A ReplicaSet is a process that runs multiple instances of a Pod and keeps the sp
 What's great about ReplicaSets is you can make live changes to the .yml file, and the user won't notice anything as the application will still be running. For example, you can edit the number of replicas from 3 to 5 and the app will not go down. 
 ![](https://i.imgur.com/H57GFjz.png)
 
-## Kubernetes Architecture
+## Kubernetes Architecture Diagram
 
 ![](https://i.imgur.com/XjYxJvj.png)
 
-## Kubernetes Commands
-
-* kubectl
-
-* kubectl delete deploy namehere
-
-* kubectl cluster-info
-
-* kubectl get namespace
-
-* kubectl get rs
-
-* kubectl describe deploy node
-
-* kubectl get service
-
-* kubectl get pvc
-
-* kubectl create -f app-deploy.yml
-
-- deploy our nginx-customised image in k8 cluster
-
-- deploy with 3 replica sets (rs)
-
-- kubectl get svc - get pods - get rs - get deploy
-
-- kubectl describe svc 
-
-- kubectl exec
-
-- if too many things are running, try kubectl get all
-
-
-### Diagram for Class Task
+## Kubernetes Architecture Diagram for Class Task
 
 ![](https://i.imgur.com/zaxjKzi.png)
 
+## Kubernetes Commands
+
+* `kubectl cluster-info`: A useful way to tell if K8 is running properly.
+
+* `kubectl`: a command line tool used to run commands against Kubernetes clusters.
+
+* `kubectl delete deploy namehere`: Deletes a deployment.
+
+* `kubectl get`: List one or more resources. For example, you can use these commands:
+
+  ```
+  kubectl get namespace
+  kubectl get rs
+  kubectl get service
+  kubectl get pvc
+  kubectl get svc
+  kubectl get deploy
+  kubectl get all
+  ```
+
+* `kubectl describe`: Display detailed state of one or more resources, including the uninitialized ones by default. For example, you could use these commands:
+
+  ```
+  kubectl describe svc
+  kubectl describe deploy namehere
+  ```
+
+* `kubectl exec`: Execute a command against a container in a pod.
+
+
+* `kubectl create -f app-deploy.yml`: Create one or more resources from a file.
