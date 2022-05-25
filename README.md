@@ -344,7 +344,11 @@ But if this was to scale to a million users, then k8 would need to be used. And 
     1. Network: Pods are automatically assigned unique IP addresses. Pod containers share the same network namespace, including IP address and network ports. Containers in a Pod communicate with each other inside the Pod on localhost.
     2. Storage: Pods can specify a set of shared storage volumes that can be shared among the containers.
 
-* Service: A Service in Kubernetes is a REST object, similar to a Pod. Like all of the REST objects, you can POST a Service definition to the API server to create a new instance. 
+* Service: To expose your app, you need a Service. A Service resource makes Pods accessible to other Pods or users outside the cluster. Without a Service, a Pod cannot be accessed at all. A Service forwards requests to a set of Pods. In this regard, a Service is akin to a load balancer.
+
+### A Service forwarding requests to a set of Pods:
+
+  ![](https://i.imgur.com/PiGyteu.png)
 
 * Service Accounts: Kubernetes service accounts are Kubernetes resources, created and managed using the Kubernetes API, meant to be used by in-cluster Kubernetes-created entities, such as Pods, to authenticate to the Kubernetes API server or external services.
 
