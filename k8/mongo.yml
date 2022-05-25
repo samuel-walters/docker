@@ -1,7 +1,9 @@
+---
+# Persistent Volume
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mongo-pvc
+  name: sam-mongo-pvc
 spec:
   accessModes:
     - ReadWriteOnce
@@ -9,10 +11,11 @@ spec:
     requests:
       storage: 256Mi
 ---
+# Mongo Service
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongo
+  name: sam-service-mongo
 spec:
   selector:
     app: mongo
@@ -20,10 +23,11 @@ spec:
     - port: 27017
       targetPort: 27017
 ---
+# Mongo Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongo
+  name: sam-mongo
 spec:
   selector:
     matchLabels:
@@ -44,4 +48,4 @@ spec:
       volumes:
         - name: storage
           persistentVolumeClaim:
-            claimName: mongo-pvc
+            claimName: sam-mongo-pvc

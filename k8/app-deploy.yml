@@ -1,6 +1,5 @@
 ---
-# APP DEPLOYMENT
-
+# App Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -22,10 +21,10 @@ spec:
             - containerPort: 3000
           env:
             - name: DB_HOST
-              value: mongodb://mongo:27017/posts
+              value: mongodb://sam-service-mongo:27017/posts
           imagePullPolicy: Always
 ---
-#SERVICE APP
+#Service for App
 apiVersion: v1
 kind: Service
 metadata:
