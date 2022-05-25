@@ -12,6 +12,10 @@ spec:
       storage: 256Mi
 ---
 # Mongo Service
+# This service does not have a type field. 
+# If a Service does not have a type field, Kubernetes assigns it the default type ClusterIP.
+# ClusterIP makes the Pod accessible from within the cluster, but not from outside 
+# — this is fine because the only entity that has to access the MongoDB Pod is the app.
 apiVersion: v1
 kind: Service
 metadata:
