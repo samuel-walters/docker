@@ -366,6 +366,8 @@ A ReplicaSet is a process that runs multiple instances of a Pod and keeps the sp
 
 * kubectl
 
+* kubectl delete deploy namehere
+
 * kubectl cluster-info
 
 * kubectl get namespace
@@ -383,4 +385,15 @@ A ReplicaSet is a process that runs multiple instances of a Pod and keeps the sp
 - kubectl exec
 
 - if too many things are running, try kubectl get all
+
+
+### task
+
+K8 deployment with 3 pods (work with containers) - each pod will have its own ip. In k8 language, k8 ReplicaSet/replicas (rs).
+
+- Start with nginx customied image - connect using the port provided - 80.
+- check with kubectl get deploy - should see three pods running.
+- nginx-deploy.yml
+- k8 APIs to create a deployment - 
+
 
