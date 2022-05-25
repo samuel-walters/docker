@@ -354,7 +354,7 @@ But if this was to scale to a million users, then k8 would need to be used. And 
 
 * Volume: A Kubernetes volume is a directory that contains data accessible to containers in a given Pod in the orchestration and scheduling platform.
 
-* Persistent volume: A persistent volume is a piece of storage in a cluster that an administrator has provisioned. It is a resource in the cluster, just as a node is a cluster resource. A persistent volume is a volume plug-in that has a lifecycle independent of any individual pod that uses the persistent volume.
+* Persistent volume: A persistent volume is a volume plug-in that has a lifecycle independent of any individual pod that uses the persistent volume. For example, with regard to MongoDB, this storage must not be affected by whatever happens to the MongoDB Pod. If the MongoDB Pod is deleted, the storage will persist — if the MongoDB Pod is moved to another node, the storage will persist.
 
 * ContainerPort: The ContainerPort defines the port on which the app can be reached.
 
