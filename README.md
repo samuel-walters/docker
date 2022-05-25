@@ -261,16 +261,22 @@ services:
     command: mongod --bind_ip 0.0.0.0
 
   app:
-    build: ./eng110_dock/app
+    build: ./eng110_dock/app # this is running the docker build command at this destination
     restart: always
     ports: 
       - "3000:3000"
+    links:
+      - db
     environment:
       - DB_HOST=mongodb://db:27017/posts
     depends_on:
-      - db
+      - mongo
 volumes:
   db: 
 ```
 
-> 3. Run the command `docker-compose -f set_up.yml up`
+* Run the command `docker-compose -f set_up.yml up -d`.
+
+* To get the seeds to work, use the command `docker exec -it containerid node seeds/seed.js`. 
+
+* Run this command to bring down the containers (and networks): `docker-compose -f set_up.yml down`.
