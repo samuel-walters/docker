@@ -394,7 +394,7 @@ What's great about ReplicaSets is you can make live changes to the .yml file, an
 
 * `kubectl`: a command line tool used to run commands against Kubernetes clusters.
 
-* `kubectl delete deploy namehere`: Deletes a deployment.
+* `kubectl delete deploy/pod/pvc/svc namehere`: Deletes the specified entity.
 
 * `kubectl get`: List one or more resources. For example, you can use these commands:
 
