@@ -23,6 +23,13 @@ spec:
             - name: DB_HOST
               value: mongodb://sam-service-mongo:27017/posts
           imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
 ---
 #Service for App
 apiVersion: v1
