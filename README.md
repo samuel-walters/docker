@@ -408,6 +408,13 @@ On-disk files in a container are ephemeral, which presents some problems for non
 
 Only PVs of the requested class, ones with the same storageClassName as the PVC, can be bound to the PVC.
 
+### EC2
+
+#### Blockers.
+
+- Need 2CPUs - use T2 Medium
+- X Exiting due to GUEST_MISSING_CONNTRACK: Sorry, Kubernetes 1.23.3 requires conntrack to be installed in root's path ---> run the command `sudo apt-get install -y conntrack`.
+
 ## Kubernetes Commands
 
 * `kubectl cluster-info`: A useful way to tell if K8 is running properly.
