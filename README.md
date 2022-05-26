@@ -398,6 +398,8 @@ On-disk files in a container are ephemeral, which presents some problems for non
 
 ##### Difference between Persistent Volume (PV) and Persistent Volume Claim
 
+![](https://www.portworx.com/wp-content/uploads/2018/02/media-20180208.png)
+
 * A PersistentVolume (PV) is a piece of storage in the cluster that has been provisioned by an administrator. PVs are resources in the cluster just like a node is a cluster resource. PVs have a lifecycle independent of any individual Pod that uses the PV.
 
 * A PersistentVolumeClaim (PVC) is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources. Claims can request specific size and access modes (e.g., they can be mounted ReadWriteOnce, ReadOnlyMany or ReadWriteMany). 
