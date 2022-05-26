@@ -390,6 +390,22 @@ What's great about ReplicaSets is you can make live changes to the .yml file, an
 
 > 4. Go to localhost (port 80) and check the /posts page.
 
+### Kubernetes: Volume
+At its core, a volume is a directory, possibly with some data in it, which is accessible to the containers in a pod.
+
+#### Why is a volume necessary?
+On-disk files in a container are ephemeral, which presents some problems for non-trivial applications when running in containers. One problem is the loss of files when a container crashes. The kubelet restarts the container but with a clean state. Persistent volumes can solve this problem as they exist beyond the lifetime of a pod. When a pod ceases to exist, Kubernetes destroys ephemeral volumes; however, Kubernetes does not destroy persistent volumes. For any kind of volume in a given pod, data is preserved across container restarts.
+
+##### Difference between Persistent Volume (PV) and Persistent Volume Claim
+
+* A PersistentVolume (PV) is a piece of storage in the cluster that has been provisioned by an administrator. PVs are resources in the cluster just like a node is a cluster resource. PVs have a lifecycle independent of any individual Pod that uses the PV.
+
+* A PersistentVolumeClaim (PVC) is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources. Claims can request specific size and access modes (e.g., they can be mounted ReadWriteOnce, ReadOnlyMany or ReadWriteMany). 
+
+##### Bind PVC to PV
+
+Only PVs of the requested class, ones with the same storageClassName as the PVC, can be bound to the PVC.
+
 ## Kubernetes Commands
 
 * `kubectl cluster-info`: A useful way to tell if K8 is running properly.
@@ -421,19 +437,3 @@ What's great about ReplicaSets is you can make live changes to the .yml file, an
 * `kubectl exec`: Execute a command against a container in a pod.
 
 * `kubectl create -f app-deploy.yml`: Create one or more resources from a file.
-
-request resources as per the business needs
-- within the deployment file - code block:
-resources:
-256mb
-memory 
-cpu
-limits
-
-volumes: to make data persistent - on cloud - on prem
-- local hard drive - connect our deployment with the volume
-
-- volume - persistent volume - persistent volume claim
-10 gb      mongo-5gb          claim 3gb - mount volume
-
-accessmode: ReadWriteonce/many
