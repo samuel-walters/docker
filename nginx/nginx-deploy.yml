@@ -1,0 +1,27 @@
+# Which version of APIs for deployment - find the right api on k8 official documentation
+apiVersion: apps/v1
+
+kind: Deployment # pod, service # replicaset # ASG
+
+metadata:
+  # name of the deployment?
+  name: node
+spec:
+# labels & selectors are the communication channels between micro-services
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 3
+  template: 
+    metadata:
+      labels:
+        # connect with the same labels (other options is IPs)
+        app: nginx
+    spec:
+      containers: 
+        - name: nginx
+          image: samuelwalters/test
+          ports:
+            - containerPort: 80
+          # if it does not exist locally, then pull it
+          imagePullPolicy: Always
