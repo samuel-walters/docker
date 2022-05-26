@@ -2,7 +2,7 @@
 
 * [Microservices](#What-are-microservices?)
 
-* [Kubernetes](#Kubernetes)
+* [Kubernetes](#Kubernetes-Open-Source-Container-Orchestration-Tool)
 
 # What are microservices?
 
@@ -297,7 +297,7 @@ volumes:
 
 * `docker inspect samuelwalters/app:v9`. 
 
-# Kubernetes
+# Kubernetes - Open Source Container Orchestration Tool
 
 Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
 
@@ -354,7 +354,9 @@ But if this was to scale to a million users, then k8 would need to be used. And 
 
 * Volume: A Kubernetes volume is a directory that contains data accessible to containers in a given Pod in the orchestration and scheduling platform.
 
-* Persistent volume: A persistent volume is a volume plug-in that has a lifecycle independent of any individual pod that uses the persistent volume. For example, with regard to MongoDB, this storage must not be affected by whatever happens to the MongoDB Pod. If the MongoDB Pod is deleted, the storage will persist — if the MongoDB Pod is moved to another node, the storage will persist.
+* Persistent volume: A persistent volume is a volume plug-in that has a lifecycle independent of any individual pod that uses the persistent volume. For example, with regard to MongoDB, this storage must not be affected by whatever happens to the MongoDB Pod. If the MongoDB Pod is deleted, the storage will persist — if the MongoDB Pod is moved to another node, the storage will persist. (Persistent volume exists so storage can survive the shutdown of one or more containers.)
+
+* A PersistentVolumeClaim (PVC) is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources. Pods can request specific levels of resources (CPU and Memory). Claims can request specific size and access modes (e.g., they can be mounted ReadWriteOnce, ReadOnlyMany or ReadWriteMany).
 
 * ContainerPort: The ContainerPort defines the port on which the app can be reached.
 
@@ -406,6 +408,7 @@ What's great about ReplicaSets is you can make live changes to the .yml file, an
   kubectl get svc
   kubectl get deploy
   kubectl get all
+  kubectl get pv
   ```
 
 * `kubectl describe`: Display detailed state of one or more resources, including the uninitialized ones by default. For example, you could use these commands:
@@ -418,3 +421,19 @@ What's great about ReplicaSets is you can make live changes to the .yml file, an
 * `kubectl exec`: Execute a command against a container in a pod.
 
 * `kubectl create -f app-deploy.yml`: Create one or more resources from a file.
+
+request resources as per the business needs
+- within the deployment file - code block:
+resources:
+256mb
+memory 
+cpu
+limits
+
+volumes: to make data persistent - on cloud - on prem
+- local hard drive - connect our deployment with the volume
+
+- volume - persistent volume - persistent volume claim
+10 gb      mongo-5gb          claim 3gb - mount volume
+
+accessmode: ReadWriteonce/many
