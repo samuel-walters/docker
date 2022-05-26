@@ -410,9 +410,40 @@ Only PVs of the requested class, ones with the same storageClassName as the PVC,
 
 ### EC2
 
+> 1. Launch an instance from your app ami.
+
+> 2. Choose T2 medium. You need 2 CPUs.
+
+> 3. Select the correct security group. Perhaps change your ip address if it has changed. Also allow ports 30000 - 32767 since this is what Kubernetes uses.
+
+> 4. Select the correct key (eng119 in this case).
+
+> 5. SSH in and run `sudo apt-get update -y` and `sudo apt-get upgrade -y`.
+
+> 6. Run `curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl`.
+
+> 7. Make the file executable with `chmod +x ./kubectl`.
+
+> 8. Move it to the correct location with `mv ./kubectl /usr/local/bin/kubectl`.
+
+> 9. Install docker with `sudo apt-get update && sudo apt-get install docker.io -y`.
+
+> 10. Check docker's version.
+
+> 11. Get MiniKube with `curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/`.
+
+> 12. Run `sudo i` and then `minikube start --vm-driver=none`.
+
+> 13. Copy and paste the yml file content into your ec2 instance.
+
+> 14. Run the files. For example, with a command that looks like this: `kubectl create -f mongo.yml`.
+
+> 15. Use the EC2's public IP address and the node port that displays when you do `kubectl get service` to access your app. Also check the /posts page.
+
 #### Blockers.
 
 - Need 2CPUs - use T2 Medium
+
 - X Exiting due to GUEST_MISSING_CONNTRACK: Sorry, Kubernetes 1.23.3 requires conntrack to be installed in root's path ---> run the command `sudo apt-get install -y conntrack`.
 
 ## Kubernetes Commands
