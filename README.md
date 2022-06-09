@@ -2,7 +2,7 @@
 
 * [Microservices](#What-are-microservices?)
 
-* [Kubernetes](#Kubernetes-Open-Source-Container-Orchestration-Tool)
+* [Kubernetes](#Kubernetes---Open-Source-Container-Orchestration-Tool)
 
 # What are microservices?
 
