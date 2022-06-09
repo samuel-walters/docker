@@ -446,6 +446,8 @@ Only PVs of the requested class, ones with the same storageClassName as the PVC,
 
 - X Exiting due to GUEST_MISSING_CONNTRACK: Sorry, Kubernetes 1.23.3 requires conntrack to be installed in root's path ---> run the command `sudo apt-get install -y conntrack`.
 
+- If starting minikube again, do `minikube delete --all --purge` and then run `minikube start --vm-driver=none`.
+
 ## Kubernetes Commands
 
 * `kubectl cluster-info`: A useful way to tell if K8 is running properly.
