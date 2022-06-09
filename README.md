@@ -73,7 +73,7 @@ Microservices has all the associated complexities of the distributed system. It 
 
 # Use Case
 
-Think about a school. Originally, the number of students won't change and there is no need to scale. In this case, a monolith architecture can be used. But if the school expands, buying new campuses and increasing its number of students, then microservices can be used as a way the business scale up (and/or scale out) to meet the new demands.
+Think about a school. Originally, the number of students won't change and there is no need to scale. In this case, a monolith architecture can be used. But if the school expands, buying new campuses and increasing its number of students, then microservices can be used as a way for the the business to scale up (and/or scale out) to meet the new demands.
 
 # What is Containerisation 
 
