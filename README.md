@@ -85,7 +85,7 @@ Think about a school. Originally, the number of students won't change and there 
 
 # Containerisation vs Virtualisation 
 
-* Containerisation - resources shared directly with the host which allows you to run a lot of docker containers, whereas you would only be able to run a few VMs. VMs has to quarantine off a set amount of resources: harddrive space, memory, and processing power, emulate hardware, and boot an entire OS. Then the VM communicates with the host computer through a translator application on the host's OS called a hypervisor. But docker communicates natively with the system kernel, bypassing the middleman on linux machines (and on windows).
+* Containerisation - resources shared directly with the host which allows you to run a lot of docker containers, whereas you would only be able to run a few VMs. VMs have to quarantine off a set amount of resources: harddrive space, memory, and processing power, emulate hardware, and boot an entire OS. Then the VM communicates with the host computer through a translator application on the host's OS called a hypervisor. But docker communicates natively with the system kernel, bypassing the middleman on linux machines (and on windows).
 
 Docker also uses less disk space as it uses a layered file system. If you have multiple docker images using the same base image, docker will only keep a single copy of the files needed and share it with each container. 
 
@@ -103,7 +103,7 @@ The key differentiator between containers and virtual machines is that virtual m
 
 - Containerisation takes up less storage.
 
-- Docker shares the resources from the OS, and vagrant takes the resources.
+- Docker shares the resources with the OS, and vagrant takes the resources.
 
 # What is Docker
 
